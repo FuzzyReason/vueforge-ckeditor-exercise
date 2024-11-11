@@ -26,6 +26,7 @@ import {
 	CKBox,
 	CKBoxImageEdit,
 	CloudServices,
+	CodeBlock,
 	Code,
 	Essentials,
 	FindAndReplace,
@@ -153,7 +154,9 @@ export default {
 					'multiLevelList',
 					'todoList',
 					'outdent',
-					'indent'
+					'indent',
+					'|',
+					'codeBlock'
 				],
 				shouldNotGroupWhenFull: false
 			},
@@ -170,6 +173,7 @@ export default {
 				CKBox,
 				CKBoxImageEdit,
 				CloudServices,
+				CodeBlock,
 				Code,
 				Essentials,
 				ExportPdf,
@@ -237,6 +241,11 @@ export default {
 				Underline,
 				Undo
 			],
+			codeBlock: {
+				languages: [
+					{ language: 'javascript', label: 'JavaScript' },
+				]
+			},
 			ckbox: {
 				tokenUrl: CKBOX_TOKEN_URL
 			},
