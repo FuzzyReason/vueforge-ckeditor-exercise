@@ -60,6 +60,7 @@ import {
 	Paragraph,
 	PasteFromOffice,
 	PictureEditing,
+	Plugin,
 	RemoveFormat,
 	SelectAll,
 	SpecialCharacters,
@@ -86,6 +87,7 @@ import {
 } from 'ckeditor5';
 import {
 	CaseChange,
+	Comments,
 	ExportPdf,
 	ExportWord,
 	FormatPainter,
@@ -95,7 +97,8 @@ import {
 	PasteFromOfficeEnhanced,
 	SlashCommand,
 	TableOfContents,
-	Template
+	Template,
+	Users
 } from 'ckeditor5-premium-features';
 
 import 'ckeditor5/ckeditor5.css';
@@ -107,6 +110,45 @@ import 'ckeditor5-premium-features/ckeditor5-premium-features.css';
  */
 const LICENSE_KEY = '<YOUR_LICENSE_KEY>';
 const CKBOX_TOKEN_URL = '<YOUR_CKBOX_TOKEN_URL>';
+
+const appData = {
+	// Users data
+	users: [
+		{
+			id: 'user-1',
+			name: 'Mex Haddox'
+		},
+		{
+			id: 'user-2',
+			name: 'Zee Croce'
+		}
+	],
+	// The ID of the current user
+	userId: 'user-1'
+};
+
+class UsersIntegration extends Plugin {
+    static get requires() {
+        return [ Users ];
+    }
+
+    static get pluginName() {
+        return 'UsersIntegration';
+    }
+
+    init() {
+        const usersPlugin = this.editor.plugins.get('Users');
+
+        // Load the user data.
+        for (const user of appData.users) {
+            usersPlugin.addUser(user);
+        }
+
+        // Set the current user.
+        usersPlugin.defineMe(appData.userId);
+    }
+}
+
 
 export default {
 	name: 'app',
@@ -121,6 +163,9 @@ export default {
 		this.config = {
 			toolbar: {
 				items: [
+					'comment',
+					'commentsArchive',
+					'|',
 					'undo',
 					'redo',
 					'|',
@@ -175,6 +220,7 @@ export default {
 				CloudServices,
 				CodeBlock,
 				Code,
+				Comments,
 				Essentials,
 				ExportPdf,
 				ExportWord,
@@ -239,7 +285,8 @@ export default {
 				TextTransformation,
 				TodoList,
 				Underline,
-				Undo
+				Undo,
+				UsersIntegration
 			],
 			codeBlock: {
 				languages: [
