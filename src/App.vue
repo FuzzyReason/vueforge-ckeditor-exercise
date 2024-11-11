@@ -86,6 +86,7 @@ import {
 	Undo
 } from 'ckeditor5';
 import {
+	AIAssistant,
 	CaseChange,
 	Comments,
 	ExportPdf,
@@ -94,6 +95,7 @@ import {
 	ImportWord,
 	MergeFields,
 	MultiLevelList,
+	OpenAITextAdapter,
 	PasteFromOfficeEnhanced,
 	SlashCommand,
 	TableOfContents,
@@ -110,6 +112,7 @@ import 'ckeditor5-premium-features/ckeditor5-premium-features.css';
  */
 const LICENSE_KEY = '<YOUR_LICENSE_KEY>';
 const CKBOX_TOKEN_URL = '<YOUR_CKBOX_TOKEN_URL>';
+const AI_AUTH_TOKEN = 'Bearer <YOUR_AI_AUTH_TOKEN>';
 
 const appData = {
 	// Users data
@@ -201,12 +204,16 @@ export default {
 					'outdent',
 					'indent',
 					'|',
-					'codeBlock'
+					'codeBlock',
+					'|',
+					'aiCommands',
+					'aiAssistant'
 				],
 				shouldNotGroupWhenFull: false
 			},
 			plugins: [
 				AccessibilityHelp,
+				AIAssistant,
 				Alignment,
 				Autoformat,
 				AutoImage,
@@ -255,6 +262,7 @@ export default {
 				Mention,
 				MergeFields,
 				MultiLevelList,
+				OpenAITextAdapter,
 				PageBreak,
 				Paragraph,
 				PasteFromOffice,
@@ -288,6 +296,20 @@ export default {
 				Undo,
 				UsersIntegration
 			],
+			ai: {
+				openAI: {
+					requestHeaders: {
+						Authorization: AI_AUTH_TOKEN
+					},
+					requestParameters: {
+						model: 'gpt-3.5-turbo-1106',
+						max_tokens: 4000
+					}
+				},
+				aiAssistant: {
+					contentAreaCssClass: 'formatted'
+				}
+			},
 			codeBlock: {
 				languages: [
 					{ language: 'javascript', label: 'JavaScript' },
