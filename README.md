@@ -1,27 +1,21 @@
-# CKEditor 5 Sample Project
+# Building a TinyMCE LMS Editor with React and OpenAI Integration
 
-## Setup instructions
+**Presenter**: Vadim Smirnov (CKEditor)
 
-### 1. Install dependencies
+## Goal
 
-To get started, install the necessary npm packages:
+Join our workshop, "Build a Google Docs clone with CKEditor 5 and Vue.js," and learn to create a rich-text editor that provides the Google Docs user experience. This session will cover the essentials of setting up both free and advanced CKEditor plugins.
 
-```sh
-npm install
-```
+Perfect for developers eager to elevate their applications, this workshop offers practical skills for immediate application.
 
-### 2. Start the project
+Sign up now to expand your toolkit with the latest web development and AI technology!
 
-Run the following command to start the project:
+- Setup CKEditor within the Vue.js application using Builder
+- Configure the starter project with four steps to match your needs
+- Add custom configuration to pre-configured plugins
+- Add AI Assistant and connect to OpenAI API
 
-```sh
-npm run start
-```
+# Prerequisites
 
-### 3. Premium features
-
-If you are using premium features, ensure you fill in the required license keys and URLs. You can sign up for [a free trial](https://orders.ckeditor.com/trial/premium-features) to use all premium features of CKEditor 5.
-
----
-
-For more information, please refer to the official [CKEditor 5 documentation](https://ckeditor.com/docs/ckeditor5/latest/getting-started/index.html).
+- [CKEditor account](https://orders.ckeditor.com/trial/premium-features)
+- [Open AI API Account](https://platform.openai.com/) for bonus step
